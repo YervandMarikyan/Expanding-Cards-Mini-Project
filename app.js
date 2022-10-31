@@ -3,19 +3,28 @@ function sliderPlugin(activeSlide = 0) {
 
     slides[activeSlide].classList.add("active");
 
-    for(const slide of slides) {
-        slide.addEventListener("click", () => {
-            clearActiveClasses();
+    // for(const slide of slides) {
+    //     slide.addEventListener("click", () => {
+    //         clearActiveClasses();
 
+    //         slide.classList.add("active");
+    //     });
+    // }
+
+    // function clearActiveClasses() {
+    //     slides.forEach((slide) => {
+    //         slide.classList.remove("active");
+    //     });
+    // }
+
+    slides.forEach(slide => {
+        slide.addEventListener("click", () => {
+            slides.forEach(slid => {
+                slid.classList.remove("active");
+            })
             slide.classList.add("active");
         });
-    }
-
-    function clearActiveClasses() {
-        slides.forEach((slide) => {
-            slide.classList.remove("active");
-        });
-    }
+    });
 }
 
 sliderPlugin(3);
